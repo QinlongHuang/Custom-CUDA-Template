@@ -3,7 +3,12 @@ Several simple examples for PyTorch calling custom CUDA operators.
 
 Compile the CUDA kernels and their cpp wrappers using JIT(Just-In-Time).
 
-For more accurate time statistics, you'd best use `nvprof` or `nsys` to run the code.
+You can run `nvprof` or `nsys` to profile your CUDA ops, e.g., 
+```bash
+nsys profile src/cuda_ops/add.py
+
+```
+And then open the generated `*.nsys-rep` file in [Nsight Systems](https://developer.nvidia.com/nsight-systems).
 
 ## Environments
 - OS: Ubuntu 20.04
@@ -15,7 +20,7 @@ For more accurate time statistics, you'd best use `nvprof` or `nsys` to run the 
 - Ninja: 1.10.0
 - GCC: 9.4.0
 
-Cannot ensure successful running in other environments.
+**No guarantee to other situation.**
 
 ## Code structure
 ```
