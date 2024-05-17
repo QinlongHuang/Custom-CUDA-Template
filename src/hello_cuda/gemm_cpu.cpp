@@ -9,11 +9,10 @@ void gemm_cpu_naive(
 	const int m,
 	const int k
 ) {
-	for (int l = 0; l < k; ++l)
-		for (int i = 0; i < n; ++i)
-			for (int j = 0; j < m; ++j) {
+	for (int l=0; l<k; l++)
+		for (int i=0; i<n; i++)
+			for (int j=0; j<m; j++)
 				C[i * m + j] += A[i * k + l] * B[l * m + j];
-			}
 }
 
 __attribute__((optimize("O3")))	// Enforce O3 optimization to use loop unrolling and SIMD
@@ -25,9 +24,8 @@ void gemm_cpu_simd(
 	const int m,
 	const int k
 ) {
-	for (int l = 0; l < k; ++l)
-		for (int i = 0; i < n; ++i)
-			for (int j = 0; j < m; ++j) {
+	for (int l=0; l<k; l++)
+		for (int i=0; i<n; i++)
+			for (int j=0; j<m; j++)
 				C[i * m + j] += A[i * k + l] * B[l * m + j];
-			}
 }
