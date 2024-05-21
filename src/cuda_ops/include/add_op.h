@@ -1,1 +1,0 @@
-void add_op(float *c, const float *a, const float *b, int n);
