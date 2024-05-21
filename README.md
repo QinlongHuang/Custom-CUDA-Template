@@ -13,7 +13,7 @@ cmake -S . -Bbuild -G Ninja
 cmake --build build
 ```
 
-For PyTorch custom CUDA operators, compile the CUDA kernels and their cpp wrappers using pytorch **JIT(Just-In-Time)**.
+For PyTorch custom CUDA operators, see `src/cuda_ops`.
 
 You can run `nvprof` or `nsys` to profile your CUDA ops, e.g., 
 ```bash
@@ -39,21 +39,31 @@ TODO: For more tutorials, see `docs`.
 ```
 📦Custom-CUDA-Template
  ┣ 📂docs
+ ┃ ┣ 📜CUDA编程模型简介.pdf
+ ┃ ┗ 📜自定义CUDA算子用于PyTorch.pdf
  ┣ 📂src
  ┃ ┣ 📂cuda_ops
  ┃ ┃ ┣ 📂include
- ┃ ┃ ┃ ┗ 📜add_op.h
+ ┃ ┃ ┃ ┗ 📜gemm.h
  ┃ ┃ ┣ 📂kernels
- ┃ ┃ ┃ ┣ 📜add_kernel.cu
- ┃ ┃ ┃ ┗ 📜fused_leaky_relu_kernel.cu
+ ┃ ┃ ┃ ┣ 📜fused_leaky_relu_kernel.cu
+ ┃ ┃ ┃ ┗ 📜gemm_kernel.cu
+ ┃ ┃ ┣ 📂pytorch_wrapper
+ ┃ ┃ ┃ ┣ 📜fused_leaky_relu_op.cpp
+ ┃ ┃ ┃ ┣ 📜gemm_op.cpp
+ ┃ ┃ ┃ ┣ 📜gemm_op_jit.cpp
+ ┃ ┃ ┃ ┗ 📜gemm_op_st.cpp
+ ┃ ┃ ┣ 📜CMakeLists.txt
  ┃ ┃ ┣ 📜__init__.py
  ┃ ┃ ┣ 📜add.py
- ┃ ┃ ┣ 📜add_op.cpp
  ┃ ┃ ┣ 📜fused_leaky_relu.py
- ┃ ┃ ┗ 📜fused_leaky_relu_op.cpp
+ ┃ ┃ ┣ 📜readme.md
+ ┃ ┃ ┣ 📜setup.py
+ ┃ ┃ ┗ 📜test.py
  ┃ ┗ 📂hello_cuda
+ ┃ ┃ ┣ 📂include
+ ┃ ┃ ┃ ┗ 📜gemm.h
  ┃ ┃ ┣ 📜CMakeLists.txt
- ┃ ┃ ┣ 📜gemm.h
  ┃ ┃ ┣ 📜gemm_cpu.cpp
  ┃ ┃ ┣ 📜gemm_gpu_1thread.cu
  ┃ ┃ ┣ 📜gemm_gpu_mulblock.cu
